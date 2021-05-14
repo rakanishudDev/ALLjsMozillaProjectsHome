@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Custom promise example</title>
+  </head>
+  <body>
+    <p>This is my page</p>
+    <script>
+    /*
+      async function myFetch() {
+        let response = await fetch('coffee.jpg');
+        if (!response.ok) {
+          throw new Error('HTTP erroe detected, Status:' + response.status);
+        }
+        let myBlob = await response.blob();
+      }
+      myFetch().then(function(myBlob) {
+        let objectURL = URL.createObjectURL(myBlob);
+        let image = document.createElement('img');
+        image.src = objectURL;
+        document.body.appendChild(image);
+      }).catch(function(e) {
+        console.log('error: ' + e.message);
+      });
+      */
+      
+      async function myFetch() {
+        try {
+          let response = await fetch('coffee.jpg');
+          if (!response.ok) {
+            throw new Error('HTTP error: ' + response.status);
+          }
+          let myBlob = await response.blob();
+          let objectURL = URL.createObjectURL(myBlob);
+          let image = document.createElement('img');
+          image.src= objectURL;
+          document.body.appendChild(image);
+        } catch(e) {
+          console.log('Error while fetching files: ' + e.message);
+        }
+      }
+      myFetch();
+
+      
+        
+
+      
+
+      
+
+
+
+    </script>
+  </body>
+</html>
